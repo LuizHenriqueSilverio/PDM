@@ -13,6 +13,7 @@
     <string name="login_button_forgot_pw">Esqueci a senha</string>
 
     <string name="login_successful">Login efetuado com sucesso</string>
+    <string name="login_failure">Nome de usuário ou senha incorretos</string>
 
     <string name="login_button_forgot_pw_message">Implementar mensagem</string>
 
