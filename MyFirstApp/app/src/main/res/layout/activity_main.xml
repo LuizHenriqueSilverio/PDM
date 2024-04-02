@@ -28,8 +28,7 @@
         android:hint="@string/login_user_login_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUser"
-        android:onClick="forgotPW" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewUser" />
 
     <TextView
         android:id="@+id/textViewPW"
@@ -89,5 +88,6 @@
         android:layout_marginEnd="@dimen/right_default_margin"
         android:text="@string/login_button_forgot_pw"
         app:layout_constraintEnd_toStartOf="@+id/buttonRegister"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
+        android:onClick="forgotPW" />
 </androidx.constraintlayout.widget.ConstraintLayout>
