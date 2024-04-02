@@ -27,10 +27,14 @@ public class MainActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(view -> {
             if(userNameStr.equals("")) {
                 Toast toast = Toast.makeText(view.getContext(), R.string.login_user_name_empty, Toast.LENGTH_SHORT);
+                toast.show();
+                return;
             }
 
             if(userPWStr.equals("")) {
                 Toast toast = Toast.makeText(view.getContext(), R.string.login_user_pw_empty, Toast.LENGTH_SHORT);
+                toast.show();
+                return;
             }
         });
 
