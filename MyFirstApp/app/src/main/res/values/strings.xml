@@ -13,4 +13,9 @@
     <string name="login_button_forgot_pw">Esqueci a senha</string>
 
     <string name="login_successful">Login efetuado com sucesso</string>
+
+    <string name="login_button_forgot_pw_message">Implementar mensagem</string>
+
+    <string name="login_user_name_empty">Nome de usuário não pode ser vazio</string>
+    <string name="login_user_pw_empty">Senha não pode ser vazia</string>
 </resources>
