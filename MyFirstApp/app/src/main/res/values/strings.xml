@@ -19,4 +19,6 @@
 
     <string name="login_user_name_empty">Nome de usuário não pode ser vazio</string>
     <string name="login_user_pw_empty">Senha não pode ser vazia</string>
+
+    <string name="home_title">Home</string>
 </resources>
