@@ -21,4 +21,6 @@
     <string name="login_user_pw_empty">Senha não pode ser vazia</string>
 
     <string name="home_title">Home</string>
+
+    <string name="welcome_take_picture">Tirar Foto</string>
 </resources>
