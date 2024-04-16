@@ -1,5 +1,6 @@
 package br.edu.ifsuldeminas.mch.myfirstapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -17,10 +18,12 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private static  int PIC_CODE = 1;
 
+    private Intent resultIntent;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
 
-        private Intent resultIntent;
+
 
         super.onCreate(savedInstanceState);
         //Registrar o layout
@@ -42,6 +45,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         resultIntent = new Intent();
         resultIntent.putExtra("result_welcome", "Não tirou foto.");
+        setResult(Activity.RESULT_OK, resultIntent);
     }
 
     @Override
@@ -57,6 +61,13 @@ public class WelcomeActivity extends AppCompatActivity {
 
             ImageView imageView = findViewById(R.id.imageViewId);
             imageView.setImageBitmap(image);
+            resultIntent.putExtra("result_welcome", "Tirou foto.");
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
