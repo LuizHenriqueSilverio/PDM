@@ -1,5 +1,7 @@
 package br.edu.ifsuldeminas.mch.myfirstapp;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,6 +19,15 @@ public class MainActivity extends AppCompatActivity {
     private static String USER = "Luiz";
     private static String PW = "123";
     private static final String TAG = "login_main_activity";
+
+    private ActivityResultLauncher<String> welcomeActivityLauncher = registerForActivityResult(new SimpleContract(), result -> {
+        if(result == null || result.equals("")) {
+            return;
+        }
+
+        Toast toast = Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG);
+        toast.show();
+    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +58,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if(userNameStr.equals(USER) && userPWStr.equals(PW)) {
-                // Abrir uma tela/activity (Welcome)
-                Intent welcomeIntent = new Intent(getApplicationContext(), WelcomeActivity.class);
-
-                welcomeIntent.putExtra("user_name", userNameStr);
-
-                startActivity(welcomeIntent);
+                // Abrir uma tela/activity (Welcome) com a ActivityResult
+                welcomeActivityLauncher.launch(userNameStr);
             }else {
                 Toast toast = Toast.makeText(view.getContext(), R.string.login_failure, Toast.LENGTH_SHORT);
                 toast.show();

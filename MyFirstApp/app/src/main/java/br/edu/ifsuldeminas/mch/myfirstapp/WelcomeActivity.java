@@ -19,6 +19,9 @@ public class WelcomeActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+
+        private Intent resultIntent;
+
         super.onCreate(savedInstanceState);
         //Registrar o layout
         setContentView(R.layout.activity_welcome);
@@ -36,6 +39,9 @@ public class WelcomeActivity extends AppCompatActivity {
             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(cameraIntent, PIC_CODE);
         });
+
+        resultIntent = new Intent();
+        resultIntent.putExtra("result_welcome", "Não tirou foto.");
     }
 
     @Override
