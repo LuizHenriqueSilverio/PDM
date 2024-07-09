@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Netflix</string>
+    <string name="series_title">Breaking Bad</string>
+    <string name="series_episode">T01:E01</string>
+    <string name="current_progress">20:00</string>
+    <string name="episode_length">40:00</string>
+</resources>
