@@ -7,11 +7,11 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonConstraint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ConstraintLayout"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNetflix"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,19 +19,19 @@
         app:layout_constraintVertical_bias="0.5" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonNetflix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Netflix"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/buttonTexto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/buttonConstraint"
         app:layout_constraintVertical_bias="0.5" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonTexto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MelhorTexto"
@@ -39,6 +39,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/buttonNetflix"
         app:layout_constraintVertical_bias="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

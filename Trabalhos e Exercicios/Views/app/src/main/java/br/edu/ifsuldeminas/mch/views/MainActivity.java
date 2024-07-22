@@ -13,14 +13,34 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    Button constraintLayout = findViewById(R.id.button);
-    Button netflix = findViewById(R.id.button2);
+        Button constraintLayout = findViewById(R.id.buttonConstraint);
+        Button netflix = findViewById(R.id.buttonNetflix);
+        Button melhorTexto = findViewById(R.id.buttonTexto);
 
-    Button melhorTexto = findViewById(R.id.button3);
+        constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ConstraintActivity.class);
+                startActivity(intent);
+            }
+        });
 
-    public void onClickConstraint(View v) {
-        Intent intent = new Intent();
+        netflix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, NetflixActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        melhorTexto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MelhorTextoActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
