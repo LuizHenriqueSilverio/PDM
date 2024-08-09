@@ -1,13 +1,17 @@
 package br.edu.ifsuldeminas.mch.tarefas;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         todoList = findViewById(R.id.todo_list);
+        registerForContextMenu(todoList);
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,5 +69,29 @@ public class MainActivity extends AppCompatActivity {
                 new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, taskList);
 
         todoList.setAdapter(arrayAdapter);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        // super.onCreateContextMenu(menu, v, menuInfo);
+        MenuItem itemDelete = menu.add("Deletar tarefa");
+        MenuItem itemFinish = menu.add("Finalizar tarefa");
+        itemDelete.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(@NonNull MenuItem menuItem) {
+                AdapterView.AdapterContextMenuInfo itemClicado = (AdapterView.AdapterContextMenuInfo) menuInfo;
+
+                Task task = (Task) todoList.getItemAtPosition(itemClicado.position);
+
+                TaskDAO dao = new TaskDAO(MainActivity.this);
+                dao.delete(task);
+                updateTasks();
+
+                Toast toast = Toast.makeText(MainActivity.this, "Tarefa excluída com sucesso!", Toast.LENGTH_LONG);
+                toast.show();
+
+                return true;
+            }
+        });
     }
 }
