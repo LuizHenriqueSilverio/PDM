@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Task implements Serializable {
 
-    private Integer id;
+    private String id;
     private String description;
     private Boolean active;
     private Date dateChanged;
@@ -15,17 +15,17 @@ public class Task implements Serializable {
         this.active = true;
     }
 
-    public Task(int id, String desc) {
+    public Task(String id, String desc) {
         this.id = id;
         setDescription(desc);
         this.setActive(true);
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

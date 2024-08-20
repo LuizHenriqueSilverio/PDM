@@ -16,14 +16,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.List;
+
 import br.edu.ifsuldeminas.mch.tarefas.model.Task;
+import br.edu.ifsuldeminas.mch.tarefas.model.db.DAOObserver;
 import br.edu.ifsuldeminas.mch.tarefas.model.db.TaskDAO;
 
-public class FormActivity extends AppCompatActivity {
+public class FormActivity extends AppCompatActivity implements DAOObserver {
 
     private Toolbar toolbar;
     private EditText taskDescription;
     private Task task;
+    private TaskDAO dao;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,19 +69,15 @@ public class FormActivity extends AppCompatActivity {
                     return false;
                 }
 
-                TaskDAO dao = new TaskDAO(this);
+                dao = new TaskDAO(this);
 
                 if(this.task == null) {
                     task = new Task();
                     task.setDescription(desc);
                     dao.save(task);
-                    Toast toast = Toast.makeText(this, "Tarefa salva com sucesso!", Toast.LENGTH_LONG);
-                    toast.show();
                 } else {
                     task.setDescription(desc);
                     dao.update(task);
-                    Toast toast = Toast.makeText(this, "Tarefa atualizada com sucesso!", Toast.LENGTH_LONG);
-                    toast.show();
                 }
 
                 finish();
@@ -86,5 +86,29 @@ public class FormActivity extends AppCompatActivity {
         };
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void saveOk() {
+        Toast toast = Toast.makeText(this, "Tarefa salva com sucesso!", Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    @Override
+    public void saveError() {
+        Toast toast = Toast.makeText(this, "Erro ao salvar tarefa!", Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    @Override
+    public void updateOk() {
+        Toast toast = Toast.makeText(this, "Tarefa atualizada com sucesso!", Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    @Override
+    public void updateError() {
+        Toast toast = Toast.makeText(this, "Erro ao atualizar tarefa!", Toast.LENGTH_LONG);
+        toast.show();
     }
 }

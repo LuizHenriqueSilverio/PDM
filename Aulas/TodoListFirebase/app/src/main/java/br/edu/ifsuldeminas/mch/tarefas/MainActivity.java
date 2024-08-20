@@ -18,9 +18,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 
 import br.edu.ifsuldeminas.mch.tarefas.model.Task;
+import br.edu.ifsuldeminas.mch.tarefas.model.db.DAOObserver;
 import br.edu.ifsuldeminas.mch.tarefas.model.db.TaskDAO;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DAOObserver {
 
     private FloatingActionButton fab;
     private ListView todoList;
@@ -63,10 +64,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateTasks() {
         TaskDAO dao = new TaskDAO(this);
-        List<Task> taskList = dao.loadTasks();
+        dao.loadTasks();
 
+    }
+
+    @Override
+    public void loadOk(List<Task> tasks) {
         ArrayAdapter<Task> arrayAdapter =
-                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, taskList);
+                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tasks);
 
         todoList.setAdapter(arrayAdapter);
     }
@@ -87,11 +92,20 @@ public class MainActivity extends AppCompatActivity {
                 dao.delete(task);
                 updateTasks();
 
-                Toast toast = Toast.makeText(MainActivity.this, "Tarefa excluída com sucesso!", Toast.LENGTH_LONG);
-                toast.show();
-
                 return true;
             }
         });
+    }
+
+    @Override
+    public void deleteOk() {
+        Toast toast = Toast.makeText(MainActivity.this, "Tarefa excluída com sucesso!", Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    @Override
+    public void deleteError() {
+        Toast toast = Toast.makeText(MainActivity.this, "Erro ao excluir tarefa!", Toast.LENGTH_LONG);
+        toast.show();
     }
 }
